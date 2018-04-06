@@ -36,6 +36,10 @@ def chat():
         exit(1)
     return render_template("chat.html")
 
+@app.route("/get_name", methods=['GET'])
+def get_name():
+    return session['username']
+
 @app.route("/send_public", methods=['GET', 'POST'])
 def send_public():
     username = session['username']
@@ -63,7 +67,6 @@ def join_chat():
             from_user_in_chat = check_user_in_chat(from_user, group_to_users)
             to_user_in_chat = check_user_in_chat(to_user, group_to_users)
             if from_user_in_chat != 0:
-                # TODO: The quit button in chat.html is not implemented yet.
                 return "Please quit the current chat first."
             else:
                 if to_user_in_chat == 0:
@@ -75,6 +78,21 @@ def join_chat():
                     group_to_users[to_user_in_chat].append(from_user)
             print(group_to_users)
             return "Connection successful!"
+
+@app.route("/quit_chat", methods=['GET', 'POST'])
+def quit_chat():
+    if request.method == "GET":
+        username = session['username']
+        chat_num = check_user_in_chat(username, group_to_users)
+        if chat_num == 0:
+            return "Quit unsuccessful. You are not in any private chat."
+        else:
+            group_to_users[chat_num].remove(username)
+            if len(group_to_users[chat_num]) == 1:
+                group_to_users.pop(chat_num, None)
+                group_to_messages.pop(chat_num, None)
+            print(group_to_users)
+            return "Quit successful."
 
 @app.route("/send_private", methods=['GET', 'POST'])
 def send_private():

@@ -7,6 +7,22 @@
 
     <script type="text/javascript">
 
+        window.onload = function () {
+            var req = new XMLHttpRequest();
+            var heading = document.getElementById('my-name')
+            req.onreadystatechange = function()
+            {
+                if(this.readyState == 4 && this.status == 200) {
+                    heading.innerHTML = this.responseText;
+                }
+                else {
+                    heading.innerHTML = "Loading ...";
+                }
+            };
+            req.open('GET', '/get_name', true);
+            req.send();
+        };
+
       function send_public_message() {
 
         var req = new XMLHttpRequest();
@@ -117,10 +133,6 @@
           chat_request.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
                   connection_info.innerHTML = this.responseText;
-                  if (this.responseText == "Connection successful!") {
-                      console.log("connection successful");
-                      //TODO: add quit button and add in the server a route that handles this
-                  }
               }
               else {
                   connection_info.innerHTML = "Connecting ...";
@@ -133,6 +145,23 @@
 
       }
 
+      function quit_chat() {
+
+          var quit_info = document.getElementById("quit-flag");
+          var quit_request = new XMLHttpRequest();
+
+          quit_request.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  quit_info.innerHTML = this.responseText;
+              }
+              else {
+                  quit_info.innerHTML = "Loading ...";
+              }
+          };
+
+          quit_request.open('GET', '/quit_chat', true);
+          quit_request.send();
+      }
 
       setInterval(public_periodic_update, 5000);
 
@@ -142,6 +171,8 @@
 
 </head>
 <body>
+
+    <h2 id="my-name"></h2>
 
     <form action="send_public" method="post">
       <label>Your message:<input type="text" id="public-new-message" value="" /></label>
@@ -157,6 +188,10 @@
       <button type="button" id="submit-button-private" onclick="send_private_message();">Click</button>
     </form>
     <div id="private-sent-flag"></div>
+    <div id="quit">
+        <button type="button" id="quit-button" onclick="quit_chat();">Quit</button>
+        <div id="quit-flag"></div>
+    </div>
     <div id="private-list-of-users"></div>
     <div id="private-message-board"></div>
 
