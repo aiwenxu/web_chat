@@ -5,10 +5,12 @@ app.debug = True
 
 usernames = []
 public_messages = []
-groups = []
+groups = {}
+groups_messages = {}
 
 @app.route("/", methods=['GET', 'POST'])
 def login():
+    # TODO: The username should not be too long.
     if request.method == "POST":
         name = request.form["name"]
         if name == "":
@@ -34,13 +36,7 @@ def chat():
 
 @app.route("/send_public", methods=['GET', 'POST'])
 def send_public():
-    username = "null"
-    if 'username' in session:
-        username = session['username']
-    else:
-        # The user is not logged in. Terminate the server.
-        # TODO: Need to handle this more elegantly.
-        exit(1)
+    username = session['username']
     if request.method == "POST":
         new_message = request.form["message"]
         # TODO: May also want to add a timestamp here.
@@ -53,6 +49,16 @@ def receive_public():
     if request.method == "GET":
         info = [usernames, public_messages]
         return(str(info))
+
+@app.route("/join_chat", methods=['GET', 'POST'])
+def join_chat():
+    if request.method == "POST":
+        from_user = session['username']
+        to_user = request.form["to_user"]
+        if from_user == to_user:
+            return "Cannot connect to yourself."
+        else:
+            return "Connection successful!"
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
