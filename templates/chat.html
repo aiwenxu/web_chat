@@ -22,6 +22,17 @@
             req.send();
         };
 
+        function clear_flags () {
+            var private_sent_flag = document.getElementById('private-sent-flag');
+            var public_sent_flag = document.getElementById("public-sent-flag");
+            var quit_info = document.getElementById("quit-flag");
+            var connection_info = document.getElementById('private-chat-connection');
+            private_sent_flag.innerHTML = "";
+            public_sent_flag.innerHTML = "";
+            quit_info.innerHTML = "";
+            connection_info.innerHTML = "";
+        }
+
       function send_public_message() {
 
         var req = new XMLHttpRequest();
@@ -181,6 +192,8 @@
       setInterval(public_periodic_update, 5000);
 
       setInterval(private_periodic_update, 5000);
+
+      setInterval(clear_flags, 10000);
 
     </script>
 
