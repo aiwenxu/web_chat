@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, url_for, session, escape
-from helper import check_user_in_chat
+from helper import check_user_in_chat, get_timestamp
 
 app = Flask(__name__)
 app.debug = True
@@ -9,12 +9,18 @@ public_messages = []
 group_to_users = {}
 group_to_messages = {}
 GROUP_ID = 0
+user_states_in_private_chat = {}
 
 @app.route("/", methods=['GET', 'POST'])
 def login():
-    # TODO: The username should not be too long.
+
     if request.method == "POST":
+
         name = request.form["name"]
+
+        if len(name) >= 50:
+            return "Please enter a shorter username."
+
         if name == "":
             return "Username cannot be empty."
         elif name in usernames:
@@ -24,17 +30,14 @@ def login():
             session['username'] = name
             print(url_for("chat"))
             return "Success! <a href='/chat'>Enter the chat room.</a>"
+
     return render_template("login.html")
 
 @app.route("/chat", methods=['GET', 'POST'])
 def chat():
     if 'username' in session:
         print('Logged in as %s' % escape(session['username']))
-    else:
-        # The user is not logged in. Terminate the server.
-        # TODO: Need to handle this more elegantly.
-        exit(1)
-    return render_template("chat.html")
+        return render_template("chat.html")
 
 @app.route("/get_name", methods=['GET'])
 def get_name():
@@ -45,8 +48,8 @@ def send_public():
     username = session['username']
     if request.method == "POST":
         new_message = request.form["message"]
-        # TODO: May also want to add a timestamp here.
-        public_messages.append(username + ": " + new_message)
+        current_time = get_timestamp()
+        public_messages.append(username + ": " + new_message + " [" + current_time + "]")
         print(public_messages)
         return "Successfully sent!"
 
@@ -74,8 +77,11 @@ def join_chat():
                     GROUP_ID += 1
                     group_to_users[GROUP_ID] = [from_user, to_user]
                     group_to_messages[GROUP_ID] = []
+                    user_states_in_private_chat[from_user] = 0
+                    user_states_in_private_chat[to_user] = 0
                 else:
                     group_to_users[to_user_in_chat].append(from_user)
+                    user_states_in_private_chat[from_user] = len(group_to_messages[to_user_in_chat])
             print(group_to_users)
             return "Connection successful!"
 
@@ -102,8 +108,8 @@ def send_private():
         return "Unsuccessful. You have no private chat connection."
     if request.method == "POST":
         new_message = request.form["message"]
-        # TODO: May also want to add a timestamp here.
-        group_to_messages[chat_num].append(username + ": " + new_message)
+        current_time = get_timestamp()
+        group_to_messages[chat_num].append(username + ": " + new_message + " [" + current_time + "]")
         print(group_to_messages[chat_num])
         return "Successfully sent!"
 
@@ -114,8 +120,8 @@ def receive_private():
     if chat_num == 0:
         return "You have no private chat connection."
     if request.method == "GET":
-        # TODO: If we have a timestamp, we can filter out the earlier messages.
-        info = [group_to_users[chat_num], group_to_messages[chat_num]]
+        user_state = user_states_in_private_chat[username]
+        info = [group_to_users[chat_num], group_to_messages[chat_num][user_state:]]
         return(str(info))
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
