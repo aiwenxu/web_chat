@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" type="text/css" href="static/style1.css">
     <title>Chatting Room</title>
-
     <script type="text/javascript">
 
         window.onload = function () {
@@ -175,8 +174,10 @@
     <h2 id="my-name"></h2>
 
     <form action="send_public" method="post">
-      <label>Your message:<input type="text" id="public-new-message" value="" /></label>
-      <button type="button" id="submit-button-public" onclick="send_public_message();">Click</button>
+      <label>
+        <div id="public-message-is">Your public message:</div>
+          <input type="text" id="public-new-message" value="" /></label>
+      <button type="button" id="submit-button-public" onclick="send_public_message();">Public</button>
     </form>
     <!--TODO make the sent flag disapper after a while, or just delete it later-->
     <div id="public-sent-flag"></div>
@@ -184,8 +185,10 @@
     <div id="list-of-users"></div>
     <div id="private-chat-connection"></div>
     <form action="send_private" method="post">
-      <label>Your message:<input type="text" id="private-new-message" value="" /></label>
-      <button type="button" id="submit-button-private" onclick="send_private_message();">Click</button>
+      <label>
+        <div id="private-message-is">Your private message:</div>
+          <input type="text" id="private-new-message" value="" /></label>
+      <button type="button" id="submit-button-private" onclick="send_private_message();">Private</button>
     </form>
     <div id="private-sent-flag"></div>
     <div id="quit">
@@ -194,6 +197,8 @@
     </div>
     <div id="private-list-of-users"></div>
     <div id="private-message-board"></div>
+    <div id="private-room">Private Room</div>
+    <div id="public-room">Public Room</div>
 
 
 </body>

@@ -1,0 +1,215 @@
+html,body{
+	background-color: black;
+	background-attachment: fixed;
+	height: 100%
+}
+#my-name{
+	background-color: black;
+    color: deepskyblue;
+    font-size: 38px;
+    margin: 0px;
+}
+#public-message-board{
+	position: absolute;
+	background-color: white;
+	color: black;
+	text-align: left;
+	height: 70%;
+	width: 30%;
+	right: 5%;
+	top: 10%;
+	overflow: scroll;
+}
+#public-new-message{
+    position: absolute;
+    width: 25%;
+    height: 5%;
+    top: 82%;
+    left: 65%;
+    font-size: 30px;
+    color: deepskyblue;
+    background-color: white;
+}
+#public-message-is{
+	position: absolute;
+	background-color: black;
+	color: white;
+	text-align: center;
+	width: 30%;
+	height: 5%;
+	top: 75%;
+	right: 15%;
+	display: none;
+}
+#public-sent-flag{
+	position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 30%;
+    height: 5%;
+    top: 89%;
+    right: 5%;
+}
+#submit-button-public{
+	background-color: deepskyblue;
+    border: none;
+    color: white;
+    padding: 8px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    display: block;
+    width: 4%;
+    height: 7%;
+    top: 81%;
+    right: 5%;
+    position: absolute;
+    border: 5px solid grey;
+    border-radius: 500px;
+    z-index: 1;
+}
+#submit-button-public:hover{
+    cursor: pointer;
+    border-color:white;
+    transition: borderColor, 400ms;
+}
+#private-message-board{
+	position: absolute;
+	background-color: white;
+	color: black;
+	text-align: left;
+	height: 70%;
+	width: 40%;
+	left: 20%;
+	top: 10%;
+	overflow: scroll;
+}
+#private-new-message{
+    position: absolute;
+    width: 30%;
+    height: 5%;
+    top: 82%;
+    left: 20%;
+    font-size: 30px;
+    color: deepskyblue;
+    background-color: white;
+}
+#private-message-is{
+	position: absolute;
+	background-color: black;
+	color: white;
+	text-align: center;
+	width: 40%;
+	height: 5%;
+	top: 75%;
+	left: : 20%;
+	display: none;
+}
+#private-sent-flag{
+	position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 40%;
+    height: 5%;
+    top: 88%;
+    left: 20%;
+}
+#submit-button-private{
+	background-color: deepskyblue;
+    border: none;
+    color: white;
+    padding: 8px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    display: block;
+    width: 4%;
+    height: 7%;
+    top: 81%;
+    right: 45%;
+    position: absolute;
+    border: 5px solid grey;
+    border-radius: 500px;
+    z-index: 1;
+}
+#submit-button-private:hover{
+    cursor: pointer;
+    border-color:white;
+    transition: borderColor, 400ms;
+}
+#quit-button{
+	background-color: red;
+    border: none;
+    color: white;
+    padding: 8px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    display: block;
+    width: 4%;
+    height: 7%;
+    top: 81%;
+    right: 40%;
+    position: absolute;
+    border: 5px solid grey;
+    border-radius: 500px;
+    z-index: 1;
+}
+#quit-button:hover{
+    cursor: pointer;
+    border-color:white;
+    transition: borderColor, 400ms;
+}
+#quit-flag{
+	position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 30%;
+    height: 5%;
+    top: 93%;
+    left: 20%;
+}
+#private-list-of-users{
+	position: absolute;
+	background-color: grey;
+	color: black;
+	text-align: left;
+	height: 77%;
+	width: 10%;
+	left: 5%;
+	top: 10%;
+}
+#private-chat-connection{
+	position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 30%;
+    height: 5%;
+    top: 5%;
+    left: 30%;
+}
+#public-room{
+	background-color: black;
+    color: deepskyblue;
+    font-size: 18px;
+    margin: 0px;
+    right: 5%;
+    position: absolute;
+    top: 5%;
+}
+#private-room{
+	background-color: black;
+    color: deepskyblue;
+    font-size: 18px;
+    margin: 0px;
+    left: 20%;
+    position: absolute;
+    top: 5%;
+}

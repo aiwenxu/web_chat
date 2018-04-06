@@ -2,7 +2,7 @@
 <html>
 
   <head>
-
+    <link rel="stylesheet" type="text/css" href="static/style.css">
     <title>Web Messenger Login Form</title>
 
     <script type="text/javascript">
@@ -30,11 +30,14 @@
 
   <body>
 
-    <h2>Welcome to Web Messenger!</h2>
+    <div id="welcome">Welcome to Web Messenger!</div>
 
-    <form action="login" method="post">
-      <label>Name:<input type="text" id="name" value="" /></label>
-      <button type="button" id="submit-button" onclick="validate();">Click</button>
+    <form action="login" method="post" id="form">
+      <label id="label">
+        <div id="nameis">Your Name Is:</div>
+        <input type="text" id="name" value="" />
+      </label>
+      <button type="button" id="submit-button" onclick="validate();">Enter</button>
       <div id="result"></div>
     </form>
 
