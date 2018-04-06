@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Chatting Room</title>
+
+    <script type="text/javascript">
+
+      function send_public_message() {
+        var req = new XMLHttpRequest();
+        var sent_flag = document.getElementById('sent-flag');
+        req.onreadystatechange = function()
+        {
+          if(this.readyState == 4 && this.status == 200) {
+            sent_flag.innerHTML = this.responseText;
+          } else {
+            sent_flag.innerHTML = "Loading ...";
+          }
+        };
+
+        req.open('POST', '/send_public', true);
+        req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        req.send("message=" + document.getElementById('new-message').value);
+
+        periodic_update();
+
+      }
+
+      function periodic_update() {
+          console.log("polling...");
+          var req = new XMLHttpRequest();
+          var message_board = document.getElementById('public-message-board');
+          var list_of_users = document.getElementById('list-of-users');
+          req.onreadystatechange = function() {
+              if(this.readyState == 4 && this.status == 200) {
+                  var info = JSON.parse(this.responseText.replace(/'/g, '"'));
+                  console.log(info);
+                  message_board.innerHTML = info[1];
+                  list_of_users.innerHTML = info[0];
+//                  message_board.innerHTML = this.responseText;
+              }
+              else {
+                  message_board.innerHTML = "Loading ...";
+                  list_of_users.innerHTML = "Loading ...";
+              }
+          };
+
+          req.open('GET', '/receive_public', true);
+          req.send();
+      }
+
+      setInterval(periodic_update, 5000);
+
+    </script>
+
+</head>
+<body>
+
+    <form action="send_public" method="post">
+      <label>Your message:<input type="text" id="new-message" value="" /></label>
+      <button type="button" id="submit-button-public" onclick="send_public_message();">Click</button>
+    </form>
+    <!--TODO make the sent flag disapper after a while, or just delete it later-->
+    <div id="sent-flag"></div>
+    <div id="public-message-board"></div>
+    <div id="list-of-users"></div>
+
+</body>
+</html>
