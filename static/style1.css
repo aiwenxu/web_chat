@@ -19,6 +19,7 @@ html,body{
 	right: 5%;
 	top: 10%;
 	overflow: scroll;
+    font-size: 10px;
 }
 #public-new-message{
     position: absolute;
@@ -45,7 +46,7 @@ html,body{
 	position: absolute;
     background-color: black;
     color: white;
-    text-align: center;
+    text-align: left;
     width: 30%;
     height: 5%;
     top: 89%;
@@ -108,13 +109,13 @@ html,body{
 	display: none;
 }
 #private-sent-flag{
-	position: absolute;
+    position: absolute;
     background-color: black;
     color: white;
-    text-align: center;
+    text-align: left;
     width: 40%;
     height: 5%;
-    top: 88%;
+    top: 89%;
     left: 20%;
 }
 #submit-button-private{
@@ -169,8 +170,8 @@ html,body{
 	position: absolute;
     background-color: black;
     color: white;
-    text-align: center;
-    width: 30%;
+    text-align: left;
+    width: 40%;
     height: 5%;
     top: 93%;
     left: 20%;
@@ -189,11 +190,11 @@ html,body{
 	position: absolute;
     background-color: black;
     color: white;
-    text-align: center;
-    width: 30%;
+    text-align: left;
+    width: 40%;
     height: 5%;
     top: 5%;
-    left: 30%;
+    left: 45%;
 }
 #public-room{
 	background-color: black;
@@ -212,4 +213,33 @@ html,body{
     left: 20%;
     position: absolute;
     top: 5%;
+}
+#list-of-users{
+    position: absolute;
+    background-color: grey;
+    color: black;
+    text-align: left;
+    height: 77%;
+    width: 10%;
+    left: 5%;
+    top: 10%;
+}
+.online_users{
+    background-color: deepskyblue; /* Green */
+    border: none;
+    color: white;
+    width:100%;
+    height:50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position:relative;
+    z-index:1;
+    font-size:25px;
+}
+.online_users:hover{
+    cursor: pointer;
+    color: black;
+    transition: color 400ms;
 }
