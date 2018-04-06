@@ -71,14 +71,23 @@
           var list_of_users = document.getElementById('list-of-users');
           req.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
+
                   var info = JSON.parse(this.responseText.replace(/'/g, '"'));
                   console.log(info);
-                  message_board.innerHTML = info[1];
+
+                  messages = info[1];
+                  var message_text = "";
+                  for (i = 0; i < messages.length; i++) {
+                      message_text += messages[i] + "<br/>";
+                  }
+                  message_board.innerHTML = message_text;
+
                   list_of_users.innerHTML = "";
                   var usernames = info[0];
                   for (i = 0; i < usernames.length; i++) {
                       var new_button = document.createElement("BUTTON");
                       new_button.id = usernames[i];
+                      new_button.className = "online_users";
                       new_button.setAttribute("onclick", "join_chat(this.id);");
                       var text = document.createTextNode(usernames[i]);
                       new_button.appendChild(text);
@@ -110,7 +119,14 @@
                   else {
                       var info = JSON.parse(this.responseText.replace(/'/g, '"'));
                       console.log(info);
-                      message_board.innerHTML = info[1];
+
+                      messages = info[1];
+                      var message_text = "";
+                      for (i = 0; i < messages.length; i++) {
+                          message_text += messages[i] + "<br/>";
+                      }
+                      message_board.innerHTML = message_text;
+
                       list_of_users.innerHTML = info[0];
                   }
               }
