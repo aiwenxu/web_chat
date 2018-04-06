@@ -41,6 +41,7 @@
         {
           if(this.readyState == 4 && this.status == 200) {
             sent_flag.innerHTML = this.responseText;
+            document.getElementById('public-new-message').value = "";
           } else {
             sent_flag.innerHTML = "Loading ...";
           }
@@ -61,6 +62,7 @@
           {
               if(this.readyState == 4 && this.status == 200) {
                   sent_flag.innerHTML = this.responseText;
+                  document.getElementById('private-new-message').value = "";
               }
               else {
                   sent_flag.innerHTML = "Loading ...";
