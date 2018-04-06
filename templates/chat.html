@@ -8,8 +8,9 @@
     <script type="text/javascript">
 
       function send_public_message() {
+
         var req = new XMLHttpRequest();
-        var sent_flag = document.getElementById('sent-flag');
+        var sent_flag = document.getElementById('public-sent-flag');
         req.onreadystatechange = function()
         {
           if(this.readyState == 4 && this.status == 200) {
@@ -21,14 +22,35 @@
 
         req.open('POST', '/send_public', true);
         req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-        req.send("message=" + document.getElementById('new-message').value);
+        req.send("message=" + document.getElementById('public-new-message').value);
 
-        periodic_update();
+        public_periodic_update();
 
       }
 
-      function periodic_update() {
-          console.log("polling...");
+      function send_private_message() {
+          var req = new XMLHttpRequest();
+          var sent_flag = document.getElementById('private-sent-flag');
+          req.onreadystatechange = function()
+          {
+              if(this.readyState == 4 && this.status == 200) {
+                  sent_flag.innerHTML = this.responseText;
+              }
+              else {
+                  sent_flag.innerHTML = "Loading ...";
+              }
+          };
+
+          req.open('POST', '/send_private', true);
+          req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+          req.send("message=" + document.getElementById('private-new-message').value);
+
+          private_periodic_update();
+
+      }
+
+      function public_periodic_update() {
+          console.log("polling for public messages...");
           var req = new XMLHttpRequest();
           var message_board = document.getElementById('public-message-board');
           var list_of_users = document.getElementById('list-of-users');
@@ -58,6 +80,35 @@
           req.send();
       }
 
+      function private_periodic_update() {
+          console.log("polling for private messages...");
+          var req = new XMLHttpRequest();
+          var message_board = document.getElementById('private-message-board');
+          var list_of_users = document.getElementById('private-list-of-users');
+          req.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+
+                  if (this.responseText == "You have no private chat connection.") {
+                      message_board.innerHTML = this.responseText;
+                      list_of_users.innerHTML = "None.";
+                  }
+                  else {
+                      var info = JSON.parse(this.responseText.replace(/'/g, '"'));
+                      console.log(info);
+                      message_board.innerHTML = info[1];
+                      list_of_users.innerHTML = info[0];
+                  }
+              }
+              else {
+                  message_board.innerHTML = "Loading ...";
+                  list_of_users.innerHTML = "Loading ...";
+              }
+          };
+
+          req.open('GET', '/receive_private', true);
+          req.send();
+      }
+
       function join_chat(var_id) {
 
           var connection_info = document.getElementById('private-chat-connection');
@@ -67,7 +118,8 @@
               if (this.readyState == 4 && this.status == 200) {
                   connection_info.innerHTML = this.responseText;
                   if (this.responseText == "Connection successful!") {
-                      console.log("connection successful");w
+                      console.log("connection successful");
+                      //TODO: add quit button and add in the server a route that handles this
                   }
               }
               else {
@@ -82,7 +134,9 @@
       }
 
 
-      setInterval(periodic_update, 5000);
+      setInterval(public_periodic_update, 5000);
+
+      setInterval(private_periodic_update, 5000);
 
     </script>
 
@@ -90,14 +144,20 @@
 <body>
 
     <form action="send_public" method="post">
-      <label>Your message:<input type="text" id="new-message" value="" /></label>
+      <label>Your message:<input type="text" id="public-new-message" value="" /></label>
       <button type="button" id="submit-button-public" onclick="send_public_message();">Click</button>
     </form>
     <!--TODO make the sent flag disapper after a while, or just delete it later-->
-    <div id="sent-flag"></div>
+    <div id="public-sent-flag"></div>
     <div id="public-message-board"></div>
     <div id="list-of-users"></div>
     <div id="private-chat-connection"></div>
+    <form action="send_private" method="post">
+      <label>Your message:<input type="text" id="private-new-message" value="" /></label>
+      <button type="button" id="submit-button-private" onclick="send_private_message();">Click</button>
+    </form>
+    <div id="private-sent-flag"></div>
+    <div id="private-list-of-users"></div>
     <div id="private-message-board"></div>
 
 
