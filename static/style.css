@@ -12,26 +12,28 @@ html,body{
     width: 30%;
     height: 40px;
     top: 62%;
-    left: 40%;
+    left: 41%;
     margin-top: -100px;
     margin-left: -100px;
     font-size: 30px;
-    color: deepskyblue;
+    color: #01abaa;
+    background-color: #fedc3d;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #submit-button{
-    background-color: deepskyblue;
+    background-color: #01abaa;
     border: none;
     color: white;
     padding: 1px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 28px;
+    font-size: 20px;
     display: block;
     width: 7%;
     height: 13%;
     top: 80%;
-    left: 52%;
+    left: 53%;
     margin-top: -100px;
     margin-left: -100px;
     position: absolute;
@@ -39,6 +41,7 @@ html,body{
     border-radius: 500px;
     display: inline-block;
     z-index: 1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #submit-button:hover{
     cursor: pointer;
@@ -57,35 +60,38 @@ html,body{
     width: 20%;
     height: 20px;
     top: 71%;
-    left: 45%;
+    left: 46%;
     margin-top: -100px;
     margin-left: -100px;
     position: absolute;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #welcome{
 	text-align: center;
     /* margin-left: auto; */
     /* margin-right: auto; */
-    color: white;
+    color: #fedc3d;
     font-size: 40px;
     background-color: black;
     top: 5%;
     position: absolute;
     width: 100%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #nameis{
 	display: block;
     bottom: 50px;
-    color: white;
+    color: #01abaa;
     text-align: center;
     font-size: 29px;
     width: 30%;
     height: 20%;
     top: 50%;
-    left: 40%;
+    left: 41%;
     margin-top: -100px;
     margin-left: -100px;
     position: absolute;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #label{
 	height: 50%;

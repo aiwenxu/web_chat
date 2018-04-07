@@ -5,21 +5,24 @@ html,body{
 }
 #my-name{
 	background-color: black;
-    color: deepskyblue;
+    color: #fedc3d;
     font-size: 38px;
     margin: 0px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #public-message-board{
 	position: absolute;
-	background-color: white;
-	color: black;
-	text-align: left;
-	height: 70%;
-	width: 30%;
-	right: 5%;
-	top: 10%;
-	overflow: scroll;
-    font-size: 10px;
+    background-color: #01abaa;
+    color: black;
+    text-align: left;
+    height: 67%;
+    width: 29%;
+    right: 5%;
+    top: 10%;
+    overflow: scroll;
+    font-size: 20px;
+    padding: 0.5%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #public-new-message{
     position: absolute;
@@ -27,9 +30,10 @@ html,body{
     height: 5%;
     top: 82%;
     left: 65%;
-    font-size: 30px;
-    color: deepskyblue;
-    background-color: white;
+    font-size: 22px;
+    color: #01abaa;
+    background-color: #fedc3d;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #public-message-is{
 	position: absolute;
@@ -51,9 +55,10 @@ html,body{
     height: 5%;
     top: 89%;
     right: 5%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #submit-button-public{
-	background-color: deepskyblue;
+	background-color: #fea680;
     border: none;
     color: white;
     padding: 8px 0px;
@@ -70,6 +75,7 @@ html,body{
     border: 5px solid grey;
     border-radius: 500px;
     z-index: 1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #submit-button-public:hover{
     cursor: pointer;
@@ -78,14 +84,17 @@ html,body{
 }
 #private-message-board{
 	position: absolute;
-	background-color: white;
-	color: black;
-	text-align: left;
-	height: 70%;
-	width: 40%;
-	left: 20%;
-	top: 10%;
-	overflow: scroll;
+    background-color: #fedc3d;
+    color: #1a2930;
+    text-align: left;
+    height: 67%;
+    width: 39%;
+    left: 20%;
+    top: 10%;
+    overflow: scroll;
+    font-size: 20px;
+    padding: 0.5%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #private-new-message{
     position: absolute;
@@ -93,9 +102,10 @@ html,body{
     height: 5%;
     top: 82%;
     left: 20%;
-    font-size: 30px;
-    color: deepskyblue;
-    background-color: white;
+    font-size: 22px;
+    color: #fedc3d;
+    background-color: #01abaa;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #private-message-is{
 	position: absolute;
@@ -117,9 +127,10 @@ html,body{
     height: 5%;
     top: 89%;
     left: 20%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #submit-button-private{
-	background-color: deepskyblue;
+	background-color: #fea680;
     border: none;
     color: white;
     padding: 8px 0px;
@@ -136,6 +147,7 @@ html,body{
     border: 5px solid grey;
     border-radius: 500px;
     z-index: 1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #submit-button-private:hover{
     cursor: pointer;
@@ -143,7 +155,7 @@ html,body{
     transition: borderColor, 400ms;
 }
 #quit-button{
-	background-color: red;
+	background-color: #c5c1c0;
     border: none;
     color: white;
     padding: 8px 0px;
@@ -160,6 +172,7 @@ html,body{
     border: 5px solid grey;
     border-radius: 500px;
     z-index: 1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #quit-button:hover{
     cursor: pointer;
@@ -175,57 +188,66 @@ html,body{
     height: 5%;
     top: 93%;
     left: 20%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #private-list-of-users{
 	position: absolute;
-	background-color: grey;
-	color: black;
-	text-align: left;
-	height: 77%;
-	width: 10%;
-	left: 5%;
-	top: 10%;
+    background-color: #01abaa;
+    color: white;
+    text-align: left;
+    height: 3%;
+    width: 21%;
+    left: 38.3%;
+    top: 7%;
+    padding-left: 10px;
+    z-index: 1;
+    overflow: scroll;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #private-chat-connection{
 	position: absolute;
     background-color: black;
     color: white;
     text-align: left;
-    width: 40%;
+    width: 29%;
     height: 5%;
-    top: 5%;
-    left: 45%;
+    top: 2%;
+    left: 31%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #public-room{
 	background-color: black;
-    color: deepskyblue;
+    color: #fedc3d;
     font-size: 18px;
     margin: 0px;
     right: 5%;
     position: absolute;
     top: 5%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #private-room{
 	background-color: black;
-    color: deepskyblue;
+    color: #01abaa;
     font-size: 18px;
     margin: 0px;
     left: 20%;
     position: absolute;
     top: 5%;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #list-of-users{
     position: absolute;
-    background-color: grey;
+    background-color: #c5c1c0;
     color: black;
     text-align: left;
-    height: 77%;
+    height: 71%;
     width: 10%;
     left: 5%;
-    top: 10%;
+    bottom: 12%;
+    overflow: scroll;
 }
 .online_users{
-    background-color: deepskyblue; /* Green */
+    background-color: #01abaa; /* Green */
     border: none;
     color: white;
     width:100%;
@@ -237,9 +259,38 @@ html,body{
     position:relative;
     z-index:1;
     font-size:25px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .online_users:hover{
     cursor: pointer;
-    color: black;
+    color: #fedc3d;
     transition: color 400ms;
+}
+#online-users-text{
+    background-color: #01abaa;
+    color: #fedc3d;
+    font-size: 20px;
+    margin: 0px;
+    /* left: 20%; */
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    border: none;
+    width: 10%;
+    height: 50px;
+    text-align: center;
+    padding-top: 17px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#members{
+    background-color: #01abaa;
+    color: #fedc3d;
+    font-size: 16px;
+    margin: 0px;
+    left: 32.5%;
+    position: absolute;
+    top: 7%;
+    height: 3%;
+    padding-left: 8px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
