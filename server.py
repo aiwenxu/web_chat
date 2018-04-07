@@ -36,7 +36,9 @@ def login():
 @app.route("/chat", methods=['GET', 'POST'])
 def chat():
     if 'username' in session:
-        print('Logged in as %s' % escape(session['username']))
+        username = session['username']
+        print('Logged in as %s' % escape(username))
+        public_messages.append(username + " has joined the chat!")
         return render_template("chat.html")
 
 @app.route("/get_name", methods=['GET'])
@@ -82,6 +84,7 @@ def join_chat():
                 else:
                     group_to_users[to_user_in_chat].append(from_user)
                     user_states_in_private_chat[from_user] = len(group_to_messages[to_user_in_chat])
+                    group_to_messages[to_user_in_chat].append(from_user + " has joined the chat!")
             print(group_to_users)
             return "Connection successful!"
 
@@ -94,6 +97,7 @@ def quit_chat():
             return "Quit unsuccessful. You are not in any private chat."
         else:
             group_to_users[chat_num].remove(username)
+            group_to_messages[chat_num].append(username + " has left the chat!")
             if len(group_to_users[chat_num]) == 1:
                 group_to_users.pop(chat_num, None)
                 group_to_messages.pop(chat_num, None)
