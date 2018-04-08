@@ -85,7 +85,8 @@
           req.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
 
-                  var info = JSON.parse(this.responseText.replace(/'/g, '"'));
+                  var info = JSON.parse(this.responseText);
+
                   console.log(info);
 
                   messages = info[1];
@@ -130,7 +131,7 @@
                       list_of_users.innerHTML = "None.";
                   }
                   else {
-                      var info = JSON.parse(this.responseText.replace(/'/g, '"'));
+                      var info = JSON.parse(this.responseText);
                       console.log(info);
 
                       messages = info[1];

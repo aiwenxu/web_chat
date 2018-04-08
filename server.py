@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, url_for, session, escape
+import json
 from helper import check_user_in_chat, get_timestamp
 
 app = Flask(__name__)
@@ -58,8 +59,8 @@ def send_public():
 @app.route("/receive_public", methods=['GET', 'POST'])
 def receive_public():
     if request.method == "GET":
-        info = [usernames, public_messages]
-        return(str(info))
+        info = json.dumps([usernames, public_messages])
+        return(info)
 
 @app.route("/join_chat", methods=['GET', 'POST'])
 def join_chat():
@@ -125,8 +126,8 @@ def receive_private():
         return "You have no private chat connection."
     if request.method == "GET":
         user_state = user_states_in_private_chat[username]
-        info = [group_to_users[chat_num], group_to_messages[chat_num][user_state:]]
-        return(str(info))
+        info = json.dumps([group_to_users[chat_num], group_to_messages[chat_num][user_state:]])
+        return(info)
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
