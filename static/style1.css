@@ -24,6 +24,7 @@ html,body{
     padding: 0.5%;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+#public-message-board::-webkit-scrollbar {display:none}
 #public-new-message{
     position: absolute;
     width: 25%;
@@ -96,6 +97,7 @@ html,body{
     padding: 0.5%;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+#private-message-board::-webkit-scrollbar {display:none}
 #private-new-message{
     position: absolute;
     width: 30%;
@@ -204,6 +206,7 @@ html,body{
     overflow: scroll;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+#private-list-of-users::-webkit-scrollbar {display:none}
 #private-chat-connection{
 	position: absolute;
     background-color: black;
@@ -246,6 +249,7 @@ html,body{
     bottom: 12%;
     overflow: scroll;
 }
+#list-of-users::-webkit-scrollbar {display:none}
 .online_users{
     background-color: #01abaa; /* Green */
     border: none;
